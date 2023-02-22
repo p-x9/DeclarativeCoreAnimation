@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "modify",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/p-x9/Modify.git",
+      "state" : {
+        "revision" : "9819459f0bf82e569cd909bfffb04e5b78fbef59",
+        "version" : "0.0.5"
+      }
+    }
+  ],
+  "version" : 2
+}
