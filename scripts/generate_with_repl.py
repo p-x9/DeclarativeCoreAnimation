@@ -35,7 +35,6 @@ def get_swift_header(class_name: str) -> str:
         shell=True,
         text=True,
         capture_output=True)
-    print(process.stdout)
     return process.stdout
 
 
@@ -72,7 +71,6 @@ def generate(class_name: str) -> None:
 
     if is_struct:
         print('skip struct')
-        print(lines)
         return
 
     lines = list(filter(lambda line: line.startswith('  '), lines))
