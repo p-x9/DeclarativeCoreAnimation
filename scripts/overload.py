@@ -8,7 +8,6 @@ tab = '    '
 
 overwrite = False
 target = 'CoreAnimation'
-platform = 'macOS'
 
 
 def generate(file: str) -> None:
@@ -16,7 +15,7 @@ def generate(file: str) -> None:
     class_name = class_name.split('.')[0]
     class_name = class_name.replace('+', '')
 
-    output_path = f"{generated_dir_path}/{target}/value/{platform}/{class_name}+value.{platform}.generated.swift"
+    output_path = f"{generated_dir_path}/{target}/value/{class_name}+value.generated.swift"
 
     f = open(file, 'r', encoding='UTF-8')
     text = f.read()
@@ -34,17 +33,12 @@ def generate(file: str) -> None:
 
 
 def parse_args() -> None:
-    global overwrite, platform
+    global overwrite
 
     parser = argparse.ArgumentParser(
         description="generate overload modifier"
     )
 
-    parser.add_argument("--platform",
-                        type=str,
-                        help="platform(iOS/macOS)",
-                        default=target,
-                        required=True)
     parser.add_argument("--overwrite",
                         action='store_true',
                         help="overwrite generated files",
@@ -53,13 +47,12 @@ def parse_args() -> None:
     args = parser.parse_args()
 
     overwrite = args.overwrite
-    platform = args.platform
 
 
 if __name__ == '__main__':
     parse_args()
 
-    files = glob.glob(f'../Sources/DeclarativeCoreAnimation/Generated/{target}/wrap/{platform}/*.swift')
+    files = glob.glob(f'../Sources/DeclarativeCoreAnimation/Generated/{target}/wrap/*.swift')
 
     for file in files:
         generate(file)
