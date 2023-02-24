@@ -13,7 +13,7 @@ target = 'CoreAnimation'
 def generate(file: str) -> None:
     class_name = file.split('/')[-1]
     class_name = class_name.split('.')[0]
-    class_name = class_name.replace('+', '')
+    class_name = class_name.split('+')[0]
 
     output_path = f"{generated_dir_path}/{target}/value/{class_name}+value.generated.swift"
 
